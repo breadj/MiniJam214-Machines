@@ -1,0 +1,21 @@
+- Something similar to the Mario Party minigame where you sort the bob-ombs
+	- Called *Sort or 'Splode*
+	- Can change the bob-ombs into nanomachines - some that are good, some that have been infected with a virus
+- Earn powerups to sort them quicker and in larger quantities
+	- Able to continuously upgrade a simple AoE capture
+		- Maybe too OP; perhaps make it so at least 70% of machines in the AoE need to be correct to be sorted properly
+			- 70% factor could be upgradable to make it closer to 50%
+			- To keep it balanced, maybe make it flat numbers rather than % (70% at mid-game crowd density = 70% at end-game crowd density, but 3 mid-game vs 3 end-game is very different)
+	- A 'lasso' upgrade might work too
+		- Draw around the ones you want to sort
+		- The machines both in and out can still move during the drawing process
+		- If any in the loop aren't the same type then the player takes damage
+- If nanomachines, or small robots, it can be framed like initially you're using tweezers to individually pick them out from each other
+	- Upgrades could be like using a magnet to pick up a specific area of them
+	- Lasso tool could be like cutting a hole in the pre-sort area which gets filled back in via machinery
+		- Or having *n* robot arms pick up each of the lassoed machines (**this would be easier for tilemap limitations**)
+- There's a timer that, when reaching zero, ends the game
+	- Each correctly sorted machine increases the timer
+		- Diminishing returns the longer the game goes on
+	- An incorrectly sorted machine loses the player time
+- The speed/volume at which machines enter the pre-sort area increases as the game goes on

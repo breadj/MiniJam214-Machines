@@ -1,0 +1,24 @@
+- [ ] Add UniTask functions for wandering
+	- [ ] Waiting for a random amount of time
+	- [ ] Getting a random direction and walking for a random duration
+- [ ] Add stops for the UniTask functions when the robot is picked up
+- [ ] Implement mouse controls
+	- [ ] Pick up
+		- [ ] Singular (tweezers)
+		- [ ] Area of effect (magnet)
+			- [ ] Make the area radius variable (for upgrading purposes)
+		- [ ] Lasso (helper machine arms)
+		- [ ] Explosion timer pauses (?)
+	- [ ] Put down
+		- [ ] Robots continue normal wandering behaviour if not in sorted zones
+		- [ ] Robots counted for timer (added for correct sorting, subtracted for incorrect) when dropped in sorted zones
+		- [ ] Explosion timer unpauses
+	- [ ] Scroll switches between pickup methods
+- [ ] Choose spawn locations and add spawning behaviour
+	- [ ] Add [spawn difficulty](Spawn%20Difficulty) functionality for spawn choosing and increasing difficulty
+- [ ] Add animations
+	- [ ] Explosion when reaching lifetime
+	- [ ] Spawning blip
+	- [ ] Disappearing FX when placed in correct sorting zone
+- [ ] Add triggers for idle/walking/in-air animations
+- [ ] Make UI elements for selected 

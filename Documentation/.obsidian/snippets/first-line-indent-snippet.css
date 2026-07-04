@@ -1,0 +1,26 @@
+/* TEXT INDENT */
+
+/* regular indent */
+.first-line-indent .cm-content .cm-line {
+    text-indent: 1.5rem;
+}
+
+/* no indent for header or properties */
+.first-line-indent .cm-content .HyperMD-header,
+.metadata-container {
+    text-indent: 0;
+    /* background-color: green; */
+}
+
+.first-line-indent .cm-content .HyperMD-header+.cm-line,
+.first-line-indent .cm-content .HyperMD-quote+.cm-line {
+    text-indent: 0;
+    /* background-color: blue; */
+}
+
+.first-line-indent .cm-content .HyperMD-header+.cm-line+.cm-line,
+.first-line-indent .cm-content .HyperMD-quote+.cm-line+.cm-line {
+    text-indent: 1.5rem;
+    /* background-color: red; */
+}
+
