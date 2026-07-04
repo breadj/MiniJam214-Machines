@@ -98,7 +98,7 @@ namespace BreadJ.MiniJam214
 
         private Vector2 GetRandomDirection()
         {
-            float angle = Random.Range(0f, Mathf.PI / 2f);
+            float angle = Random.Range(0f, 2f * Mathf.PI);
             return new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
         }
         #endregion Random Funcs
