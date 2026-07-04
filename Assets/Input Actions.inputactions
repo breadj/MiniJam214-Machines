@@ -7,7 +7,7 @@
             "id": "ab93a02d-80a1-4512-a738-7acdb8e5db92",
             "actions": [
                 {
-                    "name": "PickUp",
+                    "name": "UseTool",
                     "type": "Button",
                     "id": "c75f973d-d4de-4fe8-83d0-e5d1315f8591",
                     "expectedControlType": "",
@@ -33,7 +33,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "PickUp",
+                    "action": "UseTool",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

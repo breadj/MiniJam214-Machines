@@ -5,15 +5,17 @@ namespace BreadJ.MiniJam214
 {
     public class InputManager : MonoBehaviour
     {
-        public void PickUp(InputAction.CallbackContext ctx)
+        [SerializeField] private ToolManager toolManager;
+
+        public void UseTool(InputAction.CallbackContext ctx)
         {
             if (ctx.started)
             {
-                // pick up
+                toolManager.BeginUsingTool();
             }
             else if (ctx.canceled)
             {
-                // put down
+                toolManager.StopUsingTool();
             }
         }
 
@@ -23,11 +25,11 @@ namespace BreadJ.MiniJam214
 
             if (scroll > 0)
             {
-                // next tool
+                toolManager.NextTool();
             }
             else if (scroll < 0)
             {
-                // prev tool
+                toolManager.PrevTool();
             }
         }
     }

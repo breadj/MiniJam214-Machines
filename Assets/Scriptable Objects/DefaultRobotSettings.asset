@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 324f1d8a98bd2a440ba10303eb7f45cb, type: 3}
   m_Name: DefaultRobotSettings
   m_EditorClassIdentifier: Assembly-CSharp::BreadJ.MiniJam214.RobotSettings
-  moveSpeed: 1
+  moveSpeed: 2
   waitTime:
     Min: 0.5
     Max: 3
