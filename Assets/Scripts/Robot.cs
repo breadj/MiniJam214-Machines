@@ -4,12 +4,20 @@ using UnityEngine;
 
 namespace BreadJ.MiniJam214
 {
+    public enum RobotColour
+    {
+        None = 0,
+        Blue = 1,
+        Red = 2
+    }
+
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(SpriteRenderer))]
     [RequireComponent(typeof(Animator))]
     public class Robot : MonoBehaviour
     {
         [SerializeField] private RobotSettings settings;
+        [SerializeField] private RobotColour robotColour;
 
         private static readonly int animatorInAirHash = Animator.StringToHash("IsInAir");
         private static readonly int animatorWalkingHash = Animator.StringToHash("IsWalking");
@@ -18,7 +26,6 @@ namespace BreadJ.MiniJam214
         private SpriteRenderer sr;
         private Animator animator;
 
-        private bool isMoving = false;
         private Vector2 wanderDirection;
         private CancellationTokenSource wanderCTS;
 

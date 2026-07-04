@@ -5,12 +5,28 @@ namespace BreadJ.MiniJam214
 {
     public class ToolManager : MonoBehaviour
     {
+        public static ToolManager Instance { get; private set; }
+
+        [SerializeField] private LayerGroup robotsLayerGroup;
+        public LayerGroup RobotsLayerGroup => robotsLayerGroup;
+
         private bool usingTool = false;
 
         [SerializeField] private List<Tool> tools;
         private int toolIndex = 0;
 
         private Vector2 mousePos => Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        private void Awake()
+        {
+            if (Instance != null && Instance != this)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
+            Instance = this;
+        }
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
@@ -24,6 +40,14 @@ namespace BreadJ.MiniJam214
             if (usingTool)
             {
                 tools[toolIndex].UpdateUse(mousePos);
+            }
+        }
+
+        private void OnValidate()
+        {
+            if (tools.Count < 1)
+            {
+                Debug.LogError("ToolManager requires at least one tool in the Tools list");
             }
         }
 
