@@ -5,17 +5,15 @@ namespace BreadJ.MiniJam214
 {
     public class InputManager : MonoBehaviour
     {
-        [SerializeField] private ToolManager toolManager;
-
         public void UseTool(InputAction.CallbackContext ctx)
         {
             if (ctx.started)
             {
-                toolManager.BeginUsingTool();
+                ToolManager.Instance.BeginUsingTool();
             }
             else if (ctx.canceled)
             {
-                toolManager.StopUsingTool();
+                ToolManager.Instance.StopUsingTool();
             }
         }
 
@@ -25,12 +23,20 @@ namespace BreadJ.MiniJam214
 
             if (scroll > 0)
             {
-                toolManager.NextTool();
+                ToolManager.Instance.NextTool();
             }
             else if (scroll < 0)
             {
-                toolManager.PrevTool();
+                ToolManager.Instance.PrevTool();
             }
+        }
+
+        public void MoveTool(InputAction.CallbackContext ctx)
+        {
+            Vector2 ssMousePos = ctx.ReadValue<Vector2>();
+            Vector2 worldMousePos = Camera.main.ScreenToWorldPoint(ssMousePos);
+
+            ToolManager.Instance.UpdateToolPosition(worldMousePos);
         }
     }
 }

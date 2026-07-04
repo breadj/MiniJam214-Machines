@@ -4,21 +4,23 @@ namespace BreadJ.MiniJam214
 {
     public class Tweezers : Tool
     {
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Start()
+        private Robot heldRobot = null;
+
+#if UNITY_EDITOR
+        public override void OnEquip()
         {
-        
+            Debug.Log("Equipped Tweezers");
         }
 
-        // Update is called once per frame
-        void Update()
+        public override void OnUnqeuip()
         {
-        
+            Debug.Log("Unequipped Tweezers");
         }
-        
+#endif
+
         public override void StartUse(Vector2 worldPos)
         {
-            throw new System.NotImplementedException();
+            PickUpRobot(worldPos);
         }
 
         public override void UpdateUse(Vector2 worldPos)
@@ -28,7 +30,7 @@ namespace BreadJ.MiniJam214
 
         public override void EndUse(Vector2 worldPos)
         {
-            throw new System.NotImplementedException();
+            DropRobot();
         }
 
         private void PickUpRobot(Vector2 worldPos)
@@ -37,7 +39,20 @@ namespace BreadJ.MiniJam214
             if (hit == null)
                 return;
 
-            
+            if (!hit.TryGetComponent(out Robot robot))
+                return;
+
+            robot.PickUp(transform);
+            heldRobot = robot;
+        }
+
+        private void DropRobot()
+        {
+            if (heldRobot == null)
+                return;
+
+            heldRobot.PutDown();
+            heldRobot = null;
         }
     }
 }

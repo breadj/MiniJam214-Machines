@@ -6644,6 +6644,38 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 26, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &1106409544
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1106409545}
+  m_Layer: 0
+  m_Name: Tools
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1106409545
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1106409544}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1540356412}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1355382418
 GameObject:
   m_ObjectHideFlags: 0
@@ -6677,6 +6709,50 @@ Transform:
   - {fileID: 801727717}
   m_Father: {fileID: 1017052299}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1540356411
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1540356412}
+  - component: {fileID: 1540356413}
+  m_Layer: 0
+  m_Name: Tweezers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1540356412
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540356411}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1106409545}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1540356413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540356411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e170d555ac557f04f8104dd0ee9124e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BreadJ.MiniJam214.Tweezers
 --- !u!1 &1644765653
 GameObject:
   m_ObjectHideFlags: 0
@@ -6725,6 +6801,7 @@ GameObject:
   - component: {fileID: 1785993625}
   - component: {fileID: 1785993627}
   - component: {fileID: 1785993626}
+  - component: {fileID: 1785993628}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -6804,6 +6881,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: a7371a42-3eab-4011-9082-71bb9f18d1c8
     m_ActionName: 'Gameplay/ChangeTool[/Mouse/scroll]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1785993627}
+        m_TargetAssemblyTypeName: BreadJ.MiniJam214.InputManager, Assembly-CSharp
+        m_MethodName: MoveTool
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ad1cf137-ada6-43f6-8909-1b10145fd3d1
+    m_ActionName: 'Gameplay/MoveTool[/Mouse/position]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay
@@ -6821,7 +6914,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 549f0be70d8da1147ae806d0be41d911, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BreadJ.MiniJam214.InputManager
-  toolManager: {fileID: 0}
+--- !u!114 &1785993628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1785993624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52930143d9fd7df4789d0eb5e65be4f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BreadJ.MiniJam214.ToolManager
+  robotsLayerGroup: {fileID: 11400000, guid: e767ca0139f11b041ba4a49b409bf7ed, type: 2}
+  tools:
+  - {fileID: 1540356413}
 --- !u!1 &1826959141
 GameObject:
   m_ObjectHideFlags: 0
@@ -7179,3 +7286,4 @@ SceneRoots:
   - {fileID: 2071408002}
   - {fileID: 319005546}
   - {fileID: 1785993625}
+  - {fileID: 1106409545}

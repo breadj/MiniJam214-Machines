@@ -1,7 +1,7 @@
 - [x] Add UniTask functions for wandering
 	- [x] Waiting for a random amount of time
 	- [x] Getting a random direction and walking for a random duration
-- [.] Add stops for the UniTask functions when the robot is picked up
+- [x] Add stops for the UniTask functions when the robot is picked up
 - [.] Implement mouse controls
 	- [.] Pick up
 		- [.] Singular (tweezers)

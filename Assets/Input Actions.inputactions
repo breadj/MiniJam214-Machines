@@ -19,7 +19,16 @@
                     "name": "ChangeTool",
                     "type": "Value",
                     "id": "a7371a42-3eab-4011-9082-71bb9f18d1c8",
-                    "expectedControlType": "",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "MoveTool",
+                    "type": "Value",
+                    "id": "ad1cf137-ada6-43f6-8909-1b10145fd3d1",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -45,6 +54,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "ChangeTool",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5a2e081f-b886-4397-aa3b-7fff0e7aa1c6",
+                    "path": "<Pointer>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveTool",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
