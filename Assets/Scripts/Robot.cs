@@ -6,20 +6,27 @@ namespace BreadJ.MiniJam214
 {
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(SpriteRenderer))]
+    [RequireComponent(typeof(Animator))]
     public class Robot : MonoBehaviour
     {
         [SerializeField] private RobotSettings settings;
 
+        private static readonly int animatorInAirHash = Animator.StringToHash("IsInAir");
+        private static readonly int animatorWalkingHash = Animator.StringToHash("IsWalking");
+
         private Rigidbody2D rb;
         private SpriteRenderer sr;
+        private Animator animator;
 
         private bool isMoving = false;
+        private Vector2 wanderDirection;
         private CancellationTokenSource wanderCTS;
 
         private void Awake()
         {
             rb = GetComponent<Rigidbody2D>();
             sr = GetComponent<SpriteRenderer>();
+            animator = GetComponent<Animator>();
         }
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -34,12 +41,12 @@ namespace BreadJ.MiniJam214
             CheckSpriteFlip();
         }
 
-        private void FixedUpdate()
+        private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (isMoving)
-            {
-                rb.linearVelocity = rb.linearVelocity.normalized * settings.MoveSpeed;
-            }
+            Vector2 normal = collision.GetContact(0).normal;
+            wanderDirection = Vector2.Reflect(wanderDirection.normalized, normal).normalized;
+
+            rb.linearVelocity = wanderDirection * settings.MoveSpeed;
         }
 
         public void PickUp(Transform pickerUpper)
@@ -48,13 +55,18 @@ namespace BreadJ.MiniJam214
             rb.simulated = false;
             transform.SetParent(pickerUpper);
 
+            animator.SetBool(animatorInAirHash, true);
+
             StopWandering();
         }
 
         public void PutDown()
         {
+            rb.linearVelocity = Vector2.zero;
             rb.simulated = true;
             transform.SetParent(null);
+
+            animator.SetBool(animatorInAirHash, false);
 
             StartWandering();
         }
@@ -86,7 +98,8 @@ namespace BreadJ.MiniJam214
 
         private Vector2 GetRandomDirection()
         {
-            return Random.insideUnitCircle;
+            float angle = Random.Range(0f, Mathf.PI / 2f);
+            return new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
         }
         #endregion Random Funcs
 
@@ -116,21 +129,22 @@ namespace BreadJ.MiniJam214
                     float timeToWait = GetRandomWaitTime();
                     await UniTask.WaitForSeconds(timeToWait, cancellationToken: cancelToken);
 
-                    Vector2 wanderDirection = GetRandomDirection();
+                    wanderDirection = GetRandomDirection();
                     rb.linearVelocity = wanderDirection * settings.MoveSpeed;
-                    isMoving = true;
+
+                    animator.SetBool(animatorWalkingHash, true);
 
                     float walkDuration = GetRandomWalkDuration();
                     await UniTask.WaitForSeconds(walkDuration, cancellationToken: cancelToken);
 
                     rb.linearVelocity = Vector2.zero;
-                    isMoving = false;
+                    animator.SetBool(animatorWalkingHash, false);
                 }
             }
             catch (System.OperationCanceledException)
             {
                 rb.linearVelocity = Vector2.zero;
-                isMoving = false;
+                animator.SetBool(animatorWalkingHash, false);
             }
         }
         #endregion Wander Logic

@@ -15,7 +15,7 @@ MonoBehaviour:
   moveSpeed: 1
   waitTime:
     Min: 0.5
-    Max: 5
+    Max: 3
   walkDuration:
     Min: 0.3
     Max: 3
