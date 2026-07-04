@@ -1256,6 +1256,7 @@ GameObject:
   - component: {fileID: 934601526}
   - component: {fileID: 934601530}
   - component: {fileID: 934601529}
+  - component: {fileID: 934601531}
   m_Layer: 0
   m_Name: Blue
   m_TagString: Blue Robot
@@ -1410,7 +1411,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1421,7 +1422,20 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
+--- !u!114 &934601531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934601525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d9e1fbd59211384ea92be2d494910fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BreadJ.MiniJam214.Robot
+  settings: {fileID: 11400000, guid: 4731e3694253bdf4d9a3e09e5881adcd, type: 2}
 --- !u!1 &1017052298
 GameObject:
   m_ObjectHideFlags: 0
@@ -6863,6 +6877,7 @@ GameObject:
   - component: {fileID: 2071408000}
   - component: {fileID: 2071408004}
   - component: {fileID: 2071408003}
+  - component: {fileID: 2071408005}
   m_Layer: 0
   m_Name: Red
   m_TagString: Red Robot
@@ -7018,7 +7033,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -7029,7 +7044,20 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
+--- !u!114 &2071408005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2071407999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d9e1fbd59211384ea92be2d494910fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BreadJ.MiniJam214.Robot
+  settings: {fileID: 11400000, guid: 4731e3694253bdf4d9a3e09e5881adcd, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

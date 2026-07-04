@@ -1,7 +1,7 @@
-- [ ] Add UniTask functions for wandering
-	- [ ] Waiting for a random amount of time
-	- [ ] Getting a random direction and walking for a random duration
-- [ ] Add stops for the UniTask functions when the robot is picked up
+- [x] Add UniTask functions for wandering
+	- [x] Waiting for a random amount of time
+	- [x] Getting a random direction and walking for a random duration
+- [.] Add stops for the UniTask functions when the robot is picked up
 - [ ] Implement mouse controls
 	- [ ] Pick up
 		- [ ] Singular (tweezers)
@@ -20,5 +20,5 @@
 	- [ ] Explosion when reaching lifetime
 	- [ ] Spawning blip
 	- [ ] Disappearing FX when placed in correct sorting zone
-- [ ] Add triggers for idle/walking/in-air animations
+- [.] Add triggers for idle/walking/in-air animations
 - [ ] Make UI elements for selected 

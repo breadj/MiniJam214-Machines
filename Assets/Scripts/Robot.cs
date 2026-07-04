@@ -1,4 +1,5 @@
-using System.Collections;
+using Cysharp.Threading.Tasks;
+using System.Threading;
 using UnityEngine;
 
 namespace BreadJ.MiniJam214
@@ -12,7 +13,8 @@ namespace BreadJ.MiniJam214
         private Rigidbody2D rb;
         private SpriteRenderer sr;
 
-        private bool isWandering = false;
+        private bool isMoving = false;
+        private CancellationTokenSource wanderCTS;
 
         private void Awake()
         {
@@ -23,7 +25,7 @@ namespace BreadJ.MiniJam214
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
-        
+            StartWandering();
         }
 
         // Update is called once per frame
@@ -32,17 +34,29 @@ namespace BreadJ.MiniJam214
             CheckSpriteFlip();
         }
 
+        private void FixedUpdate()
+        {
+            if (isMoving)
+            {
+                rb.linearVelocity = rb.linearVelocity.normalized * settings.MoveSpeed;
+            }
+        }
+
         public void PickUp(Transform pickerUpper)
         {
             rb.linearVelocity = Vector2.zero;
-            rb.bodyType = RigidbodyType2D.Kinematic;
+            rb.simulated = false;
             transform.SetParent(pickerUpper);
+
+            StopWandering();
         }
 
         public void PutDown()
         {
-            rb.bodyType = RigidbodyType2D.Dynamic;
+            rb.simulated = true;
             transform.SetParent(null);
+
+            StartWandering();
         }
 
         private void CheckSpriteFlip()
@@ -76,14 +90,49 @@ namespace BreadJ.MiniJam214
         }
         #endregion Random Funcs
 
-        private IEnumerator Wander()
+        #region Wander Logic
+        private void StartWandering()
         {
-            float timeToWait = GetRandomWaitTime();
-            yield return new WaitForSeconds(timeToWait);
+            wanderCTS?.Cancel();
+            wanderCTS?.Dispose();
 
-            Vector2 wanderDirection = GetRandomDirection();
-
-            isWandering = true;
+            wanderCTS = new CancellationTokenSource();
+            Wander(wanderCTS.Token).Forget();
         }
+
+        private void StopWandering()
+        {
+            wanderCTS?.Cancel();
+            wanderCTS.Dispose();
+            wanderCTS = null;
+        }
+
+        private async UniTaskVoid Wander(CancellationToken cancelToken)
+        {
+            try
+            {
+                while (true)
+                {
+                    float timeToWait = GetRandomWaitTime();
+                    await UniTask.WaitForSeconds(timeToWait, cancellationToken: cancelToken);
+
+                    Vector2 wanderDirection = GetRandomDirection();
+                    rb.linearVelocity = wanderDirection * settings.MoveSpeed;
+                    isMoving = true;
+
+                    float walkDuration = GetRandomWalkDuration();
+                    await UniTask.WaitForSeconds(walkDuration, cancellationToken: cancelToken);
+
+                    rb.linearVelocity = Vector2.zero;
+                    isMoving = false;
+                }
+            }
+            catch (System.OperationCanceledException)
+            {
+                rb.linearVelocity = Vector2.zero;
+                isMoving = false;
+            }
+        }
+        #endregion Wander Logic
     }
 }
