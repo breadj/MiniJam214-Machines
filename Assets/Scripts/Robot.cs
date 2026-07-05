@@ -170,13 +170,44 @@ namespace BreadJ.MiniJam214
         }
         #endregion Wander Logic
 
-        public void Kill()
+        public void Explode()
         {
             StopWandering();
             timerPaused = true;
             rb.simulated = false;
 
+            GameObject deathFXObject = Instantiate(settings.ExplosionFXPrefab, transform.position, Quaternion.identity);
+            if (deathFXObject.TryGetComponent(out DestroyAfterAnimation deathFXScript))
+            {
+                deathFXScript.OnAnimationEnd += DestroySelf;
+            }
+        }
 
+        public void Teleport()
+        {
+            StopWandering();
+            timerPaused = true;
+            rb.simulated = false;
+
+            GameObject teleportFXObject = Instantiate(settings.TeleportFXPrefab, transform.position, Quaternion.identity);
+            if (teleportFXObject.TryGetComponent(out DestroyAfterAnimation teleportFXScript))
+            {
+                teleportFXScript.OnAnimationEnd += DestroySelf;
+            }
+        }
+
+        public void SpawnIn()
+        {
+            GameObject spawnFXObject = Instantiate(settings.SpawnFXPrefab, transform.position, Quaternion.identity);
+            if (spawnFXObject.TryGetComponent(out DestroyAfterAnimation spawnFXScript))
+            {
+                spawnFXScript.OnAnimationEnd += StartWandering;
+            }
+        }
+
+        private void DestroySelf()
+        {
+            Destroy(gameObject);
         }
     }
 }

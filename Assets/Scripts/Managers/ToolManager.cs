@@ -28,7 +28,12 @@ namespace BreadJ.MiniJam214
 
         void Start()
         {
-            currentTool.OnEquip();
+            currentTool.OnEquip(InputManager.Instance.PointerTarget);
+        }
+
+        private void Update()
+        {
+            
         }
 
         private void OnValidate()
@@ -45,7 +50,7 @@ namespace BreadJ.MiniJam214
 
             toolIndex = WrapToolIndex(toolIndex + 1);
             
-            currentTool.OnEquip();
+            currentTool.OnEquip(InputManager.Instance.PointerTarget);
         }
 
         public void PrevTool()
@@ -54,7 +59,7 @@ namespace BreadJ.MiniJam214
 
             toolIndex = WrapToolIndex(toolIndex - 1);
 
-            currentTool.OnEquip();
+            currentTool.OnEquip(InputManager.Instance.PointerTarget);
         }
 
         private int WrapToolIndex(int newIndex)

@@ -54,10 +54,17 @@ namespace BreadJ.MiniJam214
                     redCount++;
                 }
 
-                robot.Kill();
+                if (robot.Colour == Colour)
+                {
+                    robot.Teleport();
+                }
+                else
+                {
+                    robot.Explode();
+                }
             }
 
-            Debug.Log($"Blue: {blueCount}, Red: {redCount}");
+            //Debug.Log($"Blue: {blueCount}, Red: {redCount}");
 
             if (Colour == RobotColour.Blue)
             {

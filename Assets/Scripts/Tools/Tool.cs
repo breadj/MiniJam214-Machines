@@ -4,7 +4,7 @@ namespace BreadJ.MiniJam214
 {
     public abstract class Tool : MonoBehaviour
     {
-        public virtual void OnEquip() { }
+        public virtual void OnEquip(Transform pointer) { }
         public virtual void OnUnqeuip() { }
         public abstract void StartUse(Vector2 worldPos);
         public abstract void UpdateUse(Vector2 worldPos);

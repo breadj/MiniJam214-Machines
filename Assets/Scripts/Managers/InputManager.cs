@@ -5,7 +5,25 @@ namespace BreadJ.MiniJam214
 {
     public class InputManager : MonoBehaviour
     {
+        public static InputManager Instance;
+
+        private Transform pointer;
+        public Transform PointerTarget => pointer;
+
         private bool scrolledThisFrame = false;
+
+        private void Awake()
+        {
+            if (Instance != null && Instance != this)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
+            Instance = this;
+
+            pointer = new GameObject("Pointer").transform;
+        }
 
         private void Update()
         {
@@ -46,7 +64,7 @@ namespace BreadJ.MiniJam214
             Vector2 ssMousePos = ctx.ReadValue<Vector2>();
             Vector2 worldMousePos = Camera.main.ScreenToWorldPoint(ssMousePos);
 
-            ToolManager.Instance.UpdateToolPosition(worldMousePos);
+            pointer.position = worldMousePos;
         }
     }
 }

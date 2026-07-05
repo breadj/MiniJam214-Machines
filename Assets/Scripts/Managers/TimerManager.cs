@@ -62,7 +62,8 @@ namespace BreadJ.MiniJam214
 
         private void LoseGame()
         {
-            Time.timeScale = 0f;
+            isTimerActive = false;
+            //Time.timeScale = 0f;
             // do other stuff too
         }
 

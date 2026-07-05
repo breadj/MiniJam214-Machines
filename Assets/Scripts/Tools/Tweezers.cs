@@ -6,14 +6,18 @@ namespace BreadJ.MiniJam214
     {
         private Robot heldRobot = null;
 
-        public override void OnEquip()
+        public override void OnEquip(Transform pointer)
         {
             Debug.Log("Equipped Tweezers");
+
+            transform.SetParent(pointer);
+            transform.localPosition = Vector3.zero;
         }
 
         public override void OnUnqeuip()
         {
             Debug.Log("Unequipped Tweezers");
+            transform.SetParent(null);
 
             if (heldRobot != null)
             {
