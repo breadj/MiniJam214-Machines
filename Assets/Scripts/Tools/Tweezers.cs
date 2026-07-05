@@ -6,7 +6,6 @@ namespace BreadJ.MiniJam214
     {
         private Robot heldRobot = null;
 
-#if UNITY_EDITOR
         public override void OnEquip()
         {
             Debug.Log("Equipped Tweezers");
@@ -15,8 +14,12 @@ namespace BreadJ.MiniJam214
         public override void OnUnqeuip()
         {
             Debug.Log("Unequipped Tweezers");
+
+            if (heldRobot != null)
+            {
+                DropRobot();
+            }
         }
-#endif
 
         public override void StartUse(Vector2 worldPos)
         {

@@ -10,7 +10,6 @@ namespace BreadJ.MiniJam214
 
         private readonly List<Robot> heldRobots = new();
 
-#if UNITY_EDITOR
         public override void OnEquip()
         {
             Debug.Log("Equipped Magnet");
@@ -19,8 +18,13 @@ namespace BreadJ.MiniJam214
         public override void OnUnqeuip()
         {
             Debug.Log("Unequipped Magnet");
+
+            if (heldRobots.Count > 0)
+            {
+                DropRobots();
+            }
+
         }
-#endif
 
         public override void StartUse(Vector2 worldPos)
         {
@@ -34,7 +38,7 @@ namespace BreadJ.MiniJam214
 
         public override void EndUse(Vector2 worldPos)
         {
-            DropRobot();
+            DropRobots();
         }
 
         private void PickUpRobot(Vector2 worldPos)
@@ -50,7 +54,7 @@ namespace BreadJ.MiniJam214
             }
         }
 
-        private void DropRobot()
+        private void DropRobots()
         {
             foreach (Robot robot in heldRobots)
             {
