@@ -2,6 +2,7 @@
 	- [x] Waiting for a random amount of time
 	- [x] Getting a random direction and walking for a random duration
 - [x] Add stops for the UniTask functions when the robot is picked up
+- [ ] Add timer
 - [.] Implement mouse controls
 	- [.] Pick up
 		- [x] Singular (tweezers)
@@ -12,7 +13,7 @@
 		- [ ] Explosion timer pauses (?)
 	- [.] Put down
 		- [.] Robots continue normal wandering behaviour if not in sorted zones
-		- [ ] Robots counted for timer (added for correct sorting, subtracted for incorrect) when dropped in sorted zones
+		- [.] Robots counted for timer (added for correct sorting, subtracted for incorrect) when dropped in sorted zones
 		- [ ] Explosion timer unpauses
 	- [.] Scroll switches between pickup methods
 - [ ] Choose spawn locations and add spawning behaviour
