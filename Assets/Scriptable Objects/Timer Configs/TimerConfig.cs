@@ -6,5 +6,6 @@ namespace BreadJ.MiniJam214
     public class TimerConfig : ScriptableObject
     {
         [SerializeField, Min(0f)] private float maxTime = 15f;
+        public float MaxTime => maxTime;
     }
 }
