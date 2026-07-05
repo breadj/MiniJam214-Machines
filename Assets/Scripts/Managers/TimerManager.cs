@@ -62,7 +62,8 @@ namespace BreadJ.MiniJam214
 
         private void LoseGame()
         {
-            // do stuff
+            Time.timeScale = 0f;
+            // do other stuff too
         }
 
         #region UI
@@ -84,12 +85,12 @@ namespace BreadJ.MiniJam214
 
         public void GainTime(float amount)
         {
-            timeLeft = (timeLeft + amount) % config.MaxTime;
+            timeLeft = Mathf.Min(timeLeft + amount, config.MaxTime);
         }
 
         public void LoseTime(float amount)
         {
-            timeLeft = (timeLeft - amount) % config.MaxTime;
+            timeLeft -= amount;
             if (timeLeft <= 0f)
             {
                 // +timeLeft so Time.deltaTime doesn't overshoot the actual amount if the time since the last frame makes timeLeft < 0

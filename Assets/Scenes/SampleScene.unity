@@ -512,6 +512,7 @@ GameObject:
   - component: {fileID: 303539579}
   - component: {fileID: 303539580}
   - component: {fileID: 303539581}
+  - component: {fileID: 303539582}
   m_Layer: 0
   m_Name: Blue Zone Colour
   m_TagString: Blue Zone
@@ -639,6 +640,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &303539582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303539578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35eb0af89299ceb47a47d773c21db232, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BreadJ.MiniJam214.SortedZone
+  Colour: 1
 --- !u!1 &319005545
 GameObject:
   m_ObjectHideFlags: 0
@@ -1604,6 +1618,7 @@ GameObject:
   - component: {fileID: 801727717}
   - component: {fileID: 801727718}
   - component: {fileID: 801727719}
+  - component: {fileID: 801727720}
   m_Layer: 0
   m_Name: Red Zone Colour
   m_TagString: Red Zone
@@ -1731,6 +1746,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &801727720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 801727716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35eb0af89299ceb47a47d773c21db232, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BreadJ.MiniJam214.SortedZone
+  Colour: 2
 --- !u!1 &934181624
 GameObject:
   m_ObjectHideFlags: 0
@@ -8934,6 +8962,7 @@ GameObject:
   - component: {fileID: 1785993626}
   - component: {fileID: 1785993628}
   - component: {fileID: 1785993629}
+  - component: {fileID: 1785993630}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -9078,6 +9107,31 @@ MonoBehaviour:
   timerBar: {fileID: 1219261567}
   timeLeftText: {fileID: 750052032}
   totalTimeText: {fileID: 445079032}
+--- !u!114 &1785993630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1785993624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ecaffe7719196e439ac7bed41948ea3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BreadJ.MiniJam214.GameplayManager
+  difficultyTimeValues:
+  - Time: 0
+    Loss: 3
+    Gain: 3
+  - Time: 15
+    Loss: 4
+    Gain: 4
+  - Time: 25
+    Loss: 5
+    Gain: 5
+  - Time: 30
+    Loss: 6
+    Gain: 6
 --- !u!1 &1826959141
 GameObject:
   m_ObjectHideFlags: 0

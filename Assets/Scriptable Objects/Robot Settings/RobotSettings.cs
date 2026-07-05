@@ -5,6 +5,12 @@ namespace BreadJ.MiniJam214
     [CreateAssetMenu(fileName = "RobotSettings", menuName = "Scriptable Objects/RobotSettings")]
     public class RobotSettings : ScriptableObject
     {
+        [Header("Timer")]
+        [SerializeField] private float lifetime = 10f;
+
+        public float Lifetime => lifetime;
+
+
         [Header("Wander")]
         [SerializeField] private float moveSpeed = 5f;
 
@@ -16,5 +22,15 @@ namespace BreadJ.MiniJam214
         public float MoveSpeed => moveSpeed;
         public FloatRange WanderWaitTime => waitTime;
         public FloatRange WanderWalkDuration => walkDuration;
+
+
+        [Header("VFX")]
+        [SerializeField] private GameObject spawnPrefab;
+        [SerializeField] private GameObject explosionPrefab;
+        [SerializeField] private GameObject teleportPrefab;
+
+        public GameObject SpawnFXPrefab => spawnPrefab;
+        public GameObject ExplosionFXPrefab => explosionPrefab;
+        public GameObject TeleportFXPrefab => teleportPrefab;
     }
 }

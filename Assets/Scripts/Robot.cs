@@ -18,6 +18,7 @@ namespace BreadJ.MiniJam214
     {
         [SerializeField] private RobotSettings settings;
         [SerializeField] private RobotColour robotColour;
+        public RobotColour Colour => robotColour;
 
         private static readonly int animatorInAirHash = Animator.StringToHash("IsInAir");
         private static readonly int animatorWalkingHash = Animator.StringToHash("IsWalking");
@@ -29,6 +30,9 @@ namespace BreadJ.MiniJam214
         private Vector2 wanderDirection;
         private CancellationTokenSource wanderCTS;
 
+        private float timeAlive = 0f;
+        private bool timerPaused = true;
+
         private void Awake()
         {
             rb = GetComponent<Rigidbody2D>();
@@ -39,6 +43,7 @@ namespace BreadJ.MiniJam214
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
+            timerPaused = false;
             StartWandering();
         }
 
@@ -46,6 +51,15 @@ namespace BreadJ.MiniJam214
         void Update()
         {
             CheckSpriteFlip();
+
+            if (!timerPaused)
+            {
+                timeAlive += Time.deltaTime;
+                if (timeAlive >= settings.Lifetime)
+                {
+                    GameplayManager.Instance.ReportRobotDeath(this);
+                }
+            }
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
@@ -155,5 +169,14 @@ namespace BreadJ.MiniJam214
             }
         }
         #endregion Wander Logic
+
+        public void Kill()
+        {
+            StopWandering();
+            timerPaused = true;
+            rb.simulated = false;
+
+
+        }
     }
 }

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 324f1d8a98bd2a440ba10303eb7f45cb, type: 3}
   m_Name: DefaultRobotSettings
   m_EditorClassIdentifier: Assembly-CSharp::BreadJ.MiniJam214.RobotSettings
+  lifetime: 10
   moveSpeed: 2
   waitTime:
     Min: 0.5
@@ -19,3 +20,6 @@ MonoBehaviour:
   walkDuration:
     Min: 0.3
     Max: 3
+  spawnPrefab: {fileID: 8191612715324056830, guid: a4c2347a1d6ad7e4ab976e254ea51cc3, type: 3}
+  explosionPrefab: {fileID: 2216888017753215037, guid: 2c7cd1efddaee234280904cb98fc895c, type: 3}
+  teleportPrefab: {fileID: 3951760468528673965, guid: 0d026e4beca2fb9448324641f32e5c1b, type: 3}
