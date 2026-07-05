@@ -43,7 +43,7 @@ namespace BreadJ.MiniJam214
         {
             currentTool.OnUnqeuip();
 
-            toolIndex = (toolIndex + 1) % tools.Count;
+            toolIndex = WrapToolIndex(toolIndex + 1);
             
             currentTool.OnEquip();
         }
@@ -52,9 +52,14 @@ namespace BreadJ.MiniJam214
         {
             currentTool.OnUnqeuip();
 
-            toolIndex = (toolIndex - 1) % tools.Count;
+            toolIndex = WrapToolIndex(toolIndex - 1);
 
             currentTool.OnEquip();
+        }
+
+        private int WrapToolIndex(int newIndex)
+        {
+            return ((newIndex % tools.Count) + tools.Count) % tools.Count;
         }
 
         public void BeginUsingTool()

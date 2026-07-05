@@ -4,14 +4,14 @@
 - [x] Add stops for the UniTask functions when the robot is picked up
 - [.] Implement mouse controls
 	- [.] Pick up
-		- [.] Singular (tweezers)
-		- [ ] Area of effect (magnet)
-			- [ ] Make the area radius variable
-			- [ ] Make upgradable (increases radius and increases allowed wrong-sorts)
+		- [x] Singular (tweezers)
+		- [x] Area of effect (magnet)
+			- [x] Make the area radius variable
+			- [.] Make upgradable (increases radius and increases allowed wrong-sorts)
 		- [ ] Lasso (helper machine arms)
 		- [ ] Explosion timer pauses (?)
-	- [ ] Put down
-		- [ ] Robots continue normal wandering behaviour if not in sorted zones
+	- [.] Put down
+		- [.] Robots continue normal wandering behaviour if not in sorted zones
 		- [ ] Robots counted for timer (added for correct sorting, subtracted for incorrect) when dropped in sorted zones
 		- [ ] Explosion timer unpauses
 	- [.] Scroll switches between pickup methods

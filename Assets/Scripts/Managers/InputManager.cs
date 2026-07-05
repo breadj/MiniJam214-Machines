@@ -5,6 +5,13 @@ namespace BreadJ.MiniJam214
 {
     public class InputManager : MonoBehaviour
     {
+        private bool scrolledThisFrame = false;
+
+        private void Update()
+        {
+            scrolledThisFrame = false;
+        }
+
         public void UseTool(InputAction.CallbackContext ctx)
         {
             if (ctx.started)
@@ -19,8 +26,11 @@ namespace BreadJ.MiniJam214
 
         public void ChangeTool(InputAction.CallbackContext ctx)
         {
-            float scroll = ctx.ReadValue<Vector2>().y;
+            if (scrolledThisFrame)
+                return;
+            scrolledThisFrame = true;
 
+            float scroll = ctx.ReadValue<Vector2>().y;
             if (scroll > 0)
             {
                 ToolManager.Instance.NextTool();
