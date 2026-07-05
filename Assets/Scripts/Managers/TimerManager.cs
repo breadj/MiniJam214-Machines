@@ -7,6 +7,8 @@ namespace BreadJ.MiniJam214
 {
     public class TimerManager : MonoBehaviour
     {
+        public static TimerManager Instance;
+
         [SerializeField] private TimerConfig config;
 
         [SerializeField] private Image timerBar;
@@ -19,6 +21,14 @@ namespace BreadJ.MiniJam214
 
         private void Awake()
         {
+            if (Instance != null && Instance != this)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
+            Instance = this;
+
             timeLeft = config.MaxTime;      // starts with max time left
             totalTime = 0f;
         }
@@ -41,6 +51,8 @@ namespace BreadJ.MiniJam214
                     totalTime += timeLeft;
                     timeLeft = 0f;
                     isTimerActive = false;
+
+                    LoseGame();
                 }
 
                 SetBarFill();
@@ -48,6 +60,12 @@ namespace BreadJ.MiniJam214
             }
         }
 
+        private void LoseGame()
+        {
+            // do stuff
+        }
+
+        #region UI
         private void SetBarFill()
         {
             float percentage = timeLeft / config.MaxTime;
@@ -61,6 +79,26 @@ namespace BreadJ.MiniJam214
 
             float truncTotalTime = math.trunc(totalTime * 10f) / 10f;
             totalTimeText.SetText($"{truncTotalTime:0.0}s");
+        }
+        #endregion UI
+
+        public void GainTime(float amount)
+        {
+            timeLeft = (timeLeft + amount) % config.MaxTime;
+        }
+
+        public void LoseTime(float amount)
+        {
+            timeLeft = (timeLeft - amount) % config.MaxTime;
+            if (timeLeft <= 0f)
+            {
+                // +timeLeft so Time.deltaTime doesn't overshoot the actual amount if the time since the last frame makes timeLeft < 0
+                totalTime += timeLeft;
+                timeLeft = 0f;
+                isTimerActive = false;
+
+                LoseGame();
+            }
         }
     }
 }

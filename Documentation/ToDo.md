@@ -2,7 +2,7 @@
 	- [x] Waiting for a random amount of time
 	- [x] Getting a random direction and walking for a random duration
 - [x] Add stops for the UniTask functions when the robot is picked up
-- [ ] Add timer
+- [x] Add timer
 - [.] Implement mouse controls
 	- [.] Pick up
 		- [x] Singular (tweezers)
@@ -24,3 +24,4 @@
 	- [ ] Disappearing FX when placed in correct sorting zone
 - [x] Add triggers for idle/walking/in-air animations
 - [ ] Make UI elements for selected tool
+- [ ] Losing should do something
