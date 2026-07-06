@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using TMPro;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace BreadJ.MiniJam214
@@ -6,6 +8,9 @@ namespace BreadJ.MiniJam214
     public class GameplayManager : MonoBehaviour
     {
         public static GameplayManager Instance;
+
+        [SerializeField] private GameObject winScreen;
+        [SerializeField] private TextMeshProUGUI finalTimeText;
 
         [SerializeField] private List<TimeLossGain> difficultyTimeValues;
         private int currentDifficultyIndex = 0;
@@ -70,6 +75,14 @@ namespace BreadJ.MiniJam214
             {
                 TimerManager.Instance.LoseTime(-totalGain);
             }
+        }
+
+        public void LoseGame(float finalTime)
+        {
+            SpawnManager.Instance.SpawningAllowed = false;
+            winScreen.SetActive(true);
+            float truncFinalTime = math.trunc(finalTime * 10f) / 10f;
+            finalTimeText.SetText($"{truncFinalTime:0.0}s");
         }
 
 #if UNITY_EDITOR
