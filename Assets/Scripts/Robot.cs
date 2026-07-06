@@ -44,7 +44,7 @@ namespace BreadJ.MiniJam214
         void Start()
         {
             timerPaused = false;
-            StartWandering();
+            //StartWandering();
         }
 
         // Update is called once per frame

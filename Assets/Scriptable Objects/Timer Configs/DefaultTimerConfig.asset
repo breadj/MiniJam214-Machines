@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6ce902534c40f14b983ce44d20760b3, type: 3}
   m_Name: DefaultTimerConfig
   m_EditorClassIdentifier: Assembly-CSharp::BreadJ.MiniJam214.TimerConfig
-  maxTime: 15
+  maxTime: 20
