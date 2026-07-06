@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 namespace BreadJ.MiniJam214
@@ -7,6 +8,8 @@ namespace BreadJ.MiniJam214
     public class Magnet : Tool
     {
         private SpriteRenderer sr;
+
+        [SerializeField] private TextMeshProUGUI magnetText;
 
         [SerializeField] private float radius = 3f;
 
@@ -24,17 +27,17 @@ namespace BreadJ.MiniJam214
 
         public override void OnEquip(Transform pointer)
         {
-            Debug.Log("Equipped Magnet");
-
             transform.SetParent(pointer);
             transform.localPosition = Vector3.zero;
 
             sr.enabled = true;
+
+            magnetText.fontStyle |= FontStyles.Bold;
+            magnetText.text = "<u>Magnet</u>";
         }
 
         public override void OnUnqeuip()
         {
-            Debug.Log("Unequipped Magnet");
             transform.SetParent(null);
             sr.enabled = false;
 
@@ -42,6 +45,9 @@ namespace BreadJ.MiniJam214
             {
                 DropRobots();
             }
+
+            magnetText.fontStyle &= ~FontStyles.Bold;
+            magnetText.text = "Magnet";
         }
 
         public override void StartUse(Vector2 worldPos)

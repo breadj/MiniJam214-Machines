@@ -65,6 +65,8 @@ namespace BreadJ.MiniJam214
             isTimerActive = false;
             //Time.timeScale = 0f;
             // do other stuff too
+
+            GameplayManager.Instance.LoseGame(totalTime);
         }
 
         #region UI
@@ -98,6 +100,9 @@ namespace BreadJ.MiniJam214
                 totalTime += timeLeft;
                 timeLeft = 0f;
                 isTimerActive = false;
+
+                SetBarFill();
+                SetUIText();
 
                 LoseGame();
             }

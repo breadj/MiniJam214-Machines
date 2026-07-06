@@ -25,7 +25,7 @@ namespace BreadJ.MiniJam214
         [SerializeField] private List<SpawnZone> spawnZones;
 
         private float gameTime = 0f;
-        private bool activelySpawning = true;
+        public bool SpawningAllowed = true;
 
         private void Awake()
         {
@@ -66,7 +66,7 @@ namespace BreadJ.MiniJam214
                 }
             }
 
-            if (activelySpawning)
+            if (SpawningAllowed)
             {
                 timeSinceSpawn += Time.deltaTime;
                 if (timeSinceSpawn >= timeBetweenSpawning)

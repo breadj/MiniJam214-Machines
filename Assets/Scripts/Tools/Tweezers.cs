@@ -1,28 +1,34 @@
+using TMPro;
 using UnityEngine;
 
 namespace BreadJ.MiniJam214
 {
     public class Tweezers : Tool
     {
+        [SerializeField] private TextMeshProUGUI tweezersText;
+
         private Robot heldRobot = null;
 
         public override void OnEquip(Transform pointer)
         {
-            Debug.Log("Equipped Tweezers");
-
             transform.SetParent(pointer);
             transform.localPosition = Vector3.zero;
+
+            tweezersText.fontStyle |= FontStyles.Bold;
+            tweezersText.text = "<u>Tweezers</u>";
         }
 
         public override void OnUnqeuip()
         {
-            Debug.Log("Unequipped Tweezers");
             transform.SetParent(null);
 
             if (heldRobot != null)
             {
                 DropRobot();
             }
+
+            tweezersText.fontStyle &= ~FontStyles.Bold;
+            tweezersText.text = "Tweezers";
         }
 
         public override void StartUse(Vector2 worldPos)
