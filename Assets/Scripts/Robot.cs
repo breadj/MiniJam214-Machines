@@ -58,6 +58,7 @@ namespace BreadJ.MiniJam214
                 if (timeAlive >= settings.Lifetime)
                 {
                     GameplayManager.Instance.ReportRobotDeath(this);
+                    Explode();
                 }
             }
         }
